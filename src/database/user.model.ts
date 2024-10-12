@@ -10,7 +10,7 @@ export interface IUser extends Document {
   courses: Schema.Types.ObjectId[];
   status: EUserStatus;
   role: EUserRole;
-  createdAt: Date;
+  created_at: Date;
 }
 
 const userSchema = new Schema<IUser>({
@@ -39,10 +39,6 @@ const userSchema = new Schema<IUser>({
       ref: "Course",
     },
   ],
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
   role: {
     type: String,
     enum: Object.values(EUserRole),
@@ -52,6 +48,10 @@ const userSchema = new Schema<IUser>({
     type: String,
     enum: Object.values(EUserStatus),
     default: EUserStatus.ACTIVE,
+  },
+  created_at: {
+    type: Date,
+    default: Date.now,
   },
 });
 
