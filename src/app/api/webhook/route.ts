@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   const svix_timestamp = headers().get("svix-timestamp") ?? "";
   const svix_signature = headers().get("svix-signature") ?? "";
 
-  if (process.env.WEBHOOK_SECRET) {
+  if (!process.env.WEBHOOK_SECRET) {
     throw new Error("WEBHOOK_SECRET is not set");
   }
 
